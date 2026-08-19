@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Júnior Tech — Acessórios, Variedades e Assistência Técnica</title>
+<meta name="description" content="Júnior Tech: sons, fones, carregadores, perfumes, variedades e assistência técnica. Loja física — fale agora no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --bg:#0a0a0b;
+    --bg-raised:#141416;
+    --bg-raised-2:#1b1b1e;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --orange:#ff5a1f;
+    --orange-dark:#c73f10;
+    --orange-dim:rgba(255,90,31,.14);
+    --white:#f6f3ee;
+    --muted:#9a958d;
+    --muted-2:#68645d;
+    --font-display:'Archivo Black', 'Arial Black', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --container:1180px;
+    --nav-h:72px;
+    --r-sm:10px;
+    --r-md:18px;
+    --r-lg:26px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top: var(--nav-h);}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font:inherit;background:none;border:none;color:inherit;cursor:pointer;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--orange);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:16px;height:2px;
+    background:var(--orange);
+    display:inline-block;
+  }
+  h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.01em;}
+  .section-title{
+    font-size:clamp(30px,4.4vw,46px);
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+  .section-title .accent{color:var(--orange);}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ SIGNATURE STRIPE DIVIDER ============ */
+  .stripe-divider{
+    height:16px;
+    background-image:repeating-linear-gradient(135deg, var(--orange) 0 26px, #0a0a0a 26px 52px);
+    background-size:220% 100%;
+    animation:stripe-drift 14s linear infinite;
+  }
+  @keyframes stripe-drift{
+    from{background-position:0 0;}
+    to{background-position:-220px 0;}
+  }
+
+  /* ============ NAV ============ */
+  .site-nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    height:var(--nav-h);
+    display:flex;align-items:center;
+    background:rgba(10,10,11,.7);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .site-nav.scrolled{
+    border-bottom-color:var(--line);
+    background:rgba(10,10,11,.92);
+  }
+  .nav-inner{
+    width:100%;max-width:var(--container);margin:0 auto;padding:0 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{display:flex;align-items:center;gap:2px;font-family:var(--font-display);font-size:20px;line-height:1;}
+  .nav-logo .jr{color:var(--white);}
+  .nav-logo .tech{color:var(--orange);font-size:11px;letter-spacing:.1em;align-self:flex-end;margin-bottom:1px;}
+  .logo-img{display:block;height:auto;width:auto;}
+  .logo-img-nav{height:38px;}
+  .logo-img-drawer{height:34px;}
+  .logo-img-footer{height:52px;margin-bottom:14px;}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:normal;
+    text-transform:none;
+    color:var(--muted);
+    position:relative;
+    padding:6px 0;
+    transition:color .2s ease;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:var(--orange);transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--white);}
+  .nav-links a.active{color:var(--orange);}
+  .nav-links a.active::after{width:100%;}
+  .nav-cta{
+    display:flex;align-items:center;gap:16px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-body);font-weight:700;font-size:14.5px;
+    padding:12px 22px;border-radius:var(--r-sm);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--orange);color:#0a0a0a;
+  }
+  .btn-primary:hover{background:#ff7440; box-shadow:0 6px 24px rgba(255,90,31,.35); transform:translateY(-2px);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-outline{
+    border:1.5px solid var(--line-strong);color:var(--white);
+  }
+  .btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+  .nav-cta .btn{padding:10px 18px;font-size:13.5px;}
+  .nav-burger{
+    display:none;
+    width:40px;height:40px;
+    align-items:center;justify-content:center;
+    border:1px solid var(--line-strong);
+    border-radius:var(--r-sm);
+  }
+  .nav-burger .bar{width:18px;height:2px;background:var(--white);position:relative;}
+  .nav-burger .bar::before,.nav-burger .bar::after{
+    content:'';position:absolute;left:0;width:18px;height:2px;background:var(--white);
+  }
+  .nav-burger .bar::before{top:-6px;}
+  .nav-burger .bar::after{top:6px;}
+
+  /* ============ MOBILE DRAWER ============ */
+  .drawer{
+    position:fixed;inset:0;z-index:300;
+    background:#0a0a0b;
+    display:flex;flex-direction:column;
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.65,0,.35,1);
+    background-image:repeating-linear-gradient(135deg, transparent 0 40px, rgba(255,90,31,.04) 40px 42px);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-top{
+    height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;border-bottom:1px solid var(--line);
+  }
+  .drawer-close{width:40px;height:40px;position:relative;border:1px solid var(--line-strong);border-radius:var(--r-sm);}
+  .drawer-close::before,.drawer-close::after{
+    content:'';position:absolute;top:50%;left:50%;width:18px;height:2px;background:var(--white);
+  }
+  .drawer-close::before{transform:translate(-50%,-50%) rotate(45deg);}
+  .drawer-close::after{transform:translate(-50%,-50%) rotate(-45deg);}
+  .drawer-links{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:24px 32px;gap:6px;
+  }
+  .drawer-links a{
+    font-family:var(--font-display);
+    font-size:clamp(28px,9vw,38px);
+    text-transform:uppercase;
+    color:var(--white);
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .drawer-links a span{font-family:var(--font-mono);font-size:12px;color:var(--muted-2);}
+  .drawer-links a.active{color:var(--orange);}
+  .drawer-foot{padding:24px 32px;border-top:1px solid var(--line);}
+  .drawer-foot .btn{width:100%;justify-content:center;}
+  body.no-scroll{overflow:hidden;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:calc(var(--nav-h) + 40px) 0 80px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% 15%, rgba(255,90,31,.14), transparent 60%),
+      var(--bg);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 800px 600px at 70% 30%, black, transparent 75%);
+    pointer-events:none;
+  }
+  .hero-corner{
+    position:absolute; top:-40px; right:-60px; width:340px; height:340px;
+    background-image:repeating-linear-gradient(135deg, var(--orange) 0 20px, transparent 20px 40px);
+    opacity:.5;
+    transform:rotate(8deg);
+    pointer-events:none;
+    mask-image:radial-gradient(circle at 60% 40%, black 40%, transparent 72%);
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+  }
+  .hero-eyebrow{opacity:0;animation:rise .7s .1s ease forwards;}
+  .hero h1{
+    font-size:clamp(38px,5.6vw,68px);
+    text-transform:uppercase;
+    margin-top:18px;
+    opacity:0;animation:rise .7s .25s ease forwards;
+  }
+  .hero h1 .line2{color:var(--orange);}
+  .hero-sub{
+    font-size:17px;color:var(--muted);max-width:460px;margin-top:20px;
+    opacity:0;animation:rise .7s .4s ease forwards;
+  }
+  .hero-ctas{
+    display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;
+    opacity:0;animation:rise .7s .55s ease forwards;
+  }
+  .hero-tags{
+    display:flex;gap:22px;margin-top:44px;flex-wrap:wrap;
+    opacity:0;animation:rise .7s .7s ease forwards;
+  }
+  .hero-tag{font-family:var(--font-mono);font-size:12px;color:var(--muted-2);display:flex;align-items:center;gap:8px;}
+  .hero-tag b{color:var(--white);font-weight:600;}
+  .hero-tag .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;}
+  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  .hero-visual{
+    position:relative;aspect-ratio:4/5;
+    opacity:0;animation:rise .8s .35s ease forwards;
+  }
+  .hero-visual-frame{
+    position:relative;width:100%;height:100%;
+    border:1px solid var(--line-strong);
+    border-radius:var(--r-lg);
+    background:
+      repeating-linear-gradient(135deg, rgba(255,90,31,.08) 0 18px, rgba(255,90,31,0) 18px 36px),
+      linear-gradient(160deg, #17171a, #0c0c0d 70%);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-visual-frame .storefront-mark{
+    width:64%;color:var(--orange);opacity:.9;
+  }
+  .hero-video{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .hero-visual-caption{
+    position:absolute;left:14px;bottom:14px;
+    font-family:var(--font-mono);font-size:11px;color:var(--muted-2);
+    background:rgba(10,10,11,.75);padding:6px 10px;border:1px solid var(--line);border-radius:var(--r-sm);
+    display:flex;align-items:center;gap:7px;
+  }
+  .hero-visual-caption .live-dot{
+    width:7px;height:7px;border-radius:50%;background:var(--orange);
+    animation:wa-pulse-soft 1.8s ease infinite;
+  }
+  @keyframes wa-pulse-soft{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .hero-visual-corner{
+    position:absolute;top:-1px;right:-1px;width:56px;height:56px;
+    background-image:repeating-linear-gradient(135deg, var(--orange) 0 8px, #0a0a0a 8px 16px);
+    border-radius:0 var(--r-lg) 0 0;
+    z-index:2;
+  }
+
+  .scroll-cue{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    cursor:pointer;z-index:3;background:none;border:none;
+  }
+  .scroll-cue span{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--muted-2);text-transform:uppercase;}
+  .scroll-cue .chevrons{display:flex;flex-direction:column;gap:2px;}
+  .scroll-cue .chevrons i{
+    display:block;width:14px;height:8px;
+    border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);
+    transform:rotate(-45deg);
+    opacity:.25;
+    animation:cue-fade 1.8s ease infinite;
+  }
+  .scroll-cue .chevrons i:nth-child(1){animation-delay:.4s;}
+  .scroll-cue .chevrons i:nth-child(2){animation-delay:.2s;}
+  .scroll-cue .chevrons i:nth-child(3){animation-delay:0s;}
+  @keyframes cue-fade{
+    0%{opacity:.15;}
+    35%{opacity:1;}
+    100%{opacity:.15;}
+  }
+
+  /* ============ CATEGORY SECTIONS ============ */
+  .category{
+    padding:88px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .category.alt{background:var(--bg-raised);}
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .reveal-stagger.in-view .product-card{
+    animation:card-rise .6s ease forwards;
+  }
+  .reveal-stagger .product-card{opacity:0;transform:translateY(16px);}
+  .reveal-stagger.in-view .product-card:nth-child(1){animation-delay:.05s;}
+  .reveal-stagger.in-view .product-card:nth-child(2){animation-delay:.14s;}
+  .reveal-stagger.in-view .product-card:nth-child(3){animation-delay:.23s;}
+  .reveal-stagger.in-view .product-card:nth-child(4){animation-delay:.32s;}
+  @keyframes card-rise{to{opacity:1;transform:translateY(0);}}
+  .cat-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap;
+  }
+  .cat-head-text{max-width:560px;}
+  .cat-desc{color:var(--muted);margin-top:10px;font-size:15px;max-width:480px;}
+  .track-controls{display:flex;gap:10px;}
+  .track-arrow{
+    width:44px;height:44px;border:1px solid var(--line-strong);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease, background .2s ease, transform .12s ease;
+  }
+  .track-arrow:hover{border-color:var(--orange);}
+  .track-arrow:active{transform:scale(.9); background:var(--orange-dim);}
+  .track-arrow svg{width:16px;height:16px;stroke:var(--white);}
+
+  .cards-track{
+    display:flex;gap:18px;overflow-x:auto;padding-bottom:8px;
+    scroll-snap-type:x mandatory;
+    cursor:grab;
+    -ms-overflow-style:none; scrollbar-width:none;
+  }
+  .cards-track.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none;}
+  .cards-track::-webkit-scrollbar{display:none;}
+  .product-card{
+    scroll-snap-align:start;
+    flex:0 0 260px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:var(--r-md);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+  }
+  .category.alt .product-card{background:var(--bg-raised-2);}
+  .product-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--orange);
+    box-shadow:0 16px 40px rgba(255,90,31,.16);
+  }
+  .product-card-visual{
+    aspect-ratio:1/1;
+    background-image:repeating-linear-gradient(135deg, rgba(255,90,31,.10) 0 14px, transparent 14px 28px);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .product-card-visual svg{width:38%;stroke:var(--orange);}
+  .product-card-visual .ph-tag{
+    position:absolute;bottom:8px;right:8px;
+    font-family:var(--font-mono);font-size:9.5px;color:var(--muted-2);
+    background:rgba(10,10,11,.7);padding:3px 6px;letter-spacing:.04em;
+  }
+  .product-card-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .product-card-body h4{font-family:var(--font-body);font-weight:700;font-size:15.5px;}
+  .product-price{font-family:var(--font-mono);font-size:13px;color:var(--muted);}
+  .product-price b{color:var(--orange);font-size:15px;}
+  .product-card-body .wa-btn{
+    margin-top:auto;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;
+    display:flex;align-items:center;justify-content:space-between;
+    border:1px solid var(--line-strong);padding:10px 12px;
+    border-radius:var(--r-sm);
+    transition:border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .product-card-body .wa-btn:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-dim);}
+  .product-card-body .wa-btn svg{width:14px;height:14px;}
+
+  /* ============ ASSISTÊNCIA ============ */
+  .service{padding:96px 0;}
+  .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;}
+  .service-card{
+    border:1px solid var(--line);background:var(--bg-raised);
+    border-radius:var(--r-md);
+    padding:32px;display:flex;flex-direction:column;gap:16px;
+    position:relative;overflow:hidden;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .service-card:hover{border-color:var(--orange); transform:translateY(-4px);}
+  .service-card .service-icon{width:52px;height:52px;border:1px solid var(--orange);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;}
+  .service-card .service-icon svg{width:26px;height:26px;stroke:var(--orange);}
+  .service-card h3{font-size:22px;text-transform:uppercase;font-family:var(--font-display);}
+  .service-list{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+  .service-list li{
+    font-size:14.5px;color:var(--muted);
+    display:flex;align-items:baseline;gap:10px;
+    list-style:none;
+  }
+  .service-list li::before{content:'—';color:var(--orange);font-family:var(--font-mono);flex-shrink:0;}
+  .service-card .wa-btn{
+    margin-top:8px;align-self:flex-start;
+  }
+
+  /* ============ LOJAS ============ */
+  .stores{padding:96px 0;background:var(--bg-raised);}
+  .stores-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;}
+  .store-card{border:1px solid var(--line);background:var(--bg);border-radius:var(--r-md);overflow:hidden;}
+  .store-map{width:100%;height:220px;border:0;filter:grayscale(.35) invert(.92) contrast(.9);display:block;}
+  .store-info{padding:24px;}
+  .store-info .store-eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;}
+  .store-info h3{font-size:22px;text-transform:uppercase;margin-top:8px;margin-bottom:14px;}
+  .store-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+  .store-meta-row{display:flex;gap:10px;font-size:14px;color:var(--muted);align-items:flex-start;}
+  .store-meta-row svg{width:16px;height:16px;stroke:var(--orange);flex-shrink:0;margin-top:2px;}
+  .store-meta-row a:hover{color:var(--white);}
+
+  /* ============ PROVA SOCIAL ============ */
+.social-proof{
+  padding:80px 0;
+}
+
+.proof-top{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-bottom:42px;
+}
+
+/* Tempo de loja */
+.store-years{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--orange);
+
+  border:1px solid var(--orange);
+  padding:10px 16px;
+  border-radius:var(--r-sm);
+
+  letter-spacing:.04em;
+}
+
+.store-years svg{
+  width:20px;
+  height:20px;
+  stroke:var(--orange);
+}
+
+/* Área da avaliação */
+.rating-area{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+
+/* Nota 4,9 */
+.rating-number{
+  display:flex;
+  align-items:center;
+}
+
+.rating-number span{
+  font-family:var(--font-display);
+  font-size:82px;
+  line-height:1;
+  color:var(--white);
+  letter-spacing:-.05em;
+}
+
+/* Informações das estrelas */
+.rating-info{
+  padding-left:34px;
+  border-left:1px solid var(--line-strong);
+}
+
+.rating-stars{
+  display:flex;
+  gap:6px;
+  margin-bottom:12px;
+}
+
+.rating-stars span{
+  color:#ffb21c;
+  font-size:30px;
+  line-height:1;
+}
+
+.rating-title{
+  color:var(--white);
+  font-size:17px;
+  font-weight:600;
+  margin-bottom:5px;
+}
+
+.rating-subtitle{
+  color:var(--muted);
+  font-size:13px;
+}
+
+  /* ============ CONTATO ============ */
+  .contact-cta{padding:110px 0;text-align:center;position:relative;overflow:hidden;}
+  .contact-cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 700px 400px at 50% 0%, rgba(255,90,31,.14), transparent 65%);
+    pointer-events:none;
+  }
+  .contact-cta h2{font-size:clamp(32px,5vw,52px);text-transform:uppercase;margin:16px 0 18px;position:relative;}
+  .contact-cta p{color:var(--muted);max-width:480px;margin:0 auto 32px;position:relative;}
+  .contact-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;}
+  .contact-social{margin-top:32px;position:relative;font-family:var(--font-mono);font-size:13px;color:var(--muted);}
+  .contact-social a{color:var(--white);border-bottom:1px solid var(--orange);}
+
+  /* ============ FOOTER ============ */
+  footer{background:#060607;border-top:1px solid var(--line);}
+  .footer-main{padding:64px 0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px;}
+  .footer-brand p{color:var(--muted-2);font-size:13.5px;max-width:240px;}
+  .footer-col h5{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+  .footer-col ul{display:flex;flex-direction:column;gap:10px;}
+  .footer-col a,.footer-col span{font-size:14px;color:var(--muted);}
+  .footer-col a:hover{color:var(--white);}
+  .footer-store{margin-bottom:18px;}
+  .footer-store b{display:block;color:var(--white);font-size:13.5px;margin-bottom:2px;}
+  .footer-store span{font-size:12.5px;color:var(--muted-2);}
+  .footer-social{display:flex;gap:12px;margin-top:6px;}
+  .footer-social a{width:38px;height:38px;border:1px solid var(--line-strong);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease;}
+  .footer-social a:hover{border-color:var(--orange);}
+  .footer-social svg{width:17px;height:17px;stroke:var(--white);}
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    padding:20px 0;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  }
+  .footer-bottom p{font-family:var(--font-mono);font-size:12px;color:var(--muted-2);}
+  .footer-bottom .credit{color:var(--muted-2);}
+  .footer-bottom .credit b{color:var(--orange);font-weight:500;}
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .wa-float{
+    position:fixed;right:20px;bottom:20px;z-index:150;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--orange);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(255,90,31,.4);
+  }
+  .wa-float svg{width:28px;height:28px;fill:#0a0a0a;}
+  .wa-float::before{
+    content:'';position:absolute;inset:0;border-radius:50%;
+    border:2px solid var(--orange);
+    animation:wa-pulse 2.6s ease-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%{transform:scale(1);opacity:.7;}
+    100%{transform:scale(1.7);opacity:0;}
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:980px){
+    .nav-links,.nav-cta .btn-outline{display:none;}
+    .nav-burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{max-width:340px;aspect-ratio:4/3;}
+    .service-grid,.stores-grid{grid-template-columns:1fr;}
+    .footer-main{grid-template-columns:1fr 1fr;}
+    .proof-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+   .rating-area{
+  align-items:flex-start;
+  gap:20px;
+}
+
+.rating-number span{
+  font-size:64px;
+}
+
+.rating-info{
+  padding-left:20px;
+}
+
+.rating-stars span{
+  font-size:22px;
+}
+
+.rating-title{
+  font-size:15px;
+}
+
+.rating-subtitle{
+  font-size:12px;
+}
+    .footer-main{grid-template-columns:1fr;}
+    .cat-head{flex-direction:column;align-items:flex-start;}
+    .track-controls{display:none;}
+    .product-card{flex-basis:76vw;}
+    .nav-cta .btn-primary{padding:9px 14px;font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo"><img src="assets/logo.png" alt="Júnior Tech" class="logo-img logo-img-nav"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" data-nav="inicio">Início</a></li>
+      <li><a href="#sons" data-nav="sons">Sons</a></li>
+      <li><a href="#fones" data-nav="fones">Fones</a></li>
+      <li><a href="#carregadores" data-nav="carregadores">Carregador</a></li>
+      <li><a href="#perfumes" data-nav="perfumes">Perfumes</a></li>
+      <li><a href="#assistencia" data-nav="assistencia">Assistência Técnica</a></li>
+      <li><a href="#lojas" data-nav="lojas">Lojas</a></li>
+      <li><a href="#contato" data-nav="contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-primary wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais.">Fale no WhatsApp</a>
+    </div>
+    <button class="nav-burger" id="burgerBtn" aria-label="Abrir menu"><span class="bar"></span></button>
+  </div>
+</nav>
+
+<!-- ============ DRAWER MOBILE ============ -->
+<div class="drawer" id="drawer">
+  <div class="drawer-top">
+    <img src="assets/logo.png" alt="Júnior Tech" class="logo-img logo-img-drawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"></button>
+  </div>
+  <div class="drawer-links">
+    <a href="#inicio" data-nav="inicio">Início <span>01</span></a>
+    <a href="#sons" data-nav="sons">Sons <span>02</span></a>
+    <a href="#fones" data-nav="fones">Fones <span>03</span></a>
+    <a href="#carregadores" data-nav="carregadores">Carregador <span>04</span></a>
+    <a href="#perfumes" data-nav="perfumes">Perfumes <span>05</span></a>
+    <a href="#assistencia" data-nav="assistencia">Assistência <span>06</span></a>
+    <a href="#lojas" data-nav="lojas">Lojas <span>07</span></a>
+    <a href="#contato" data-nav="contato">Contato <span>08</span></a>
+  </div>
+  <div class="drawer-foot">
+    <a href="#" class="btn btn-primary wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais.">Fale no WhatsApp</a>
+  </div>
+</div>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-corner"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow hero-eyebrow">Loja física · Galeria Boulevard &amp; Km 10, Aldeia</p>
+          <h1>Acessórios e variedades<br>pro seu dia a dia.<br><span class="line2">Assistência técnica de verdade.</span></h1>
+          <p class="hero-sub">Sons, fones, carregadores, perfumes e muito mais — direto na loja ou aqui no site. Precisa consertar o celular ou o notebook? A gente resolve.</p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-primary wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais.">
+              Fale no WhatsApp
+            </a>
+            <a href="#sons" class="btn btn-outline">Ver categorias</a>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag"><i class="dot"></i>Assistência de celular <b>e</b> computador</span>
+            <span class="hero-tag"><i class="dot"></i>2 lojas físicas</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-visual-frame">
+            <div class="hero-visual-corner"></div>
+            <video class="hero-video" poster="assets/facade-poster.jpg" controls playsinline preload="metadata">
+              <source src="assets/opening.mp4" type="video/mp4">
+            </video>
+            <span class="hero-visual-caption"><i class="live-dot"></i>Inauguração da nova unidade</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-cue" id="scrollCue" aria-label="Rolar para categorias">
+      <span>Explorar</span>
+      <span class="chevrons"><i></i><i></i><i></i></span>
+    </button>
+  </section>
+
+  <div class="stripe-divider"></div>
+
+  <!-- ============ SONS ============ -->
+  <section class="category reveal reveal-stagger" id="sons">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-head-text">
+          <p class="eyebrow">Categoria 01</p>
+          <h2 class="section-title">Sons</h2>
+          <p class="cat-desc">Caixas de som pra festa, pra casa e pro dia a dia — do modelo compacto ao que enche a rua.</p>
+        </div>
+        <div class="track-controls">
+          <button class="track-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="track-arrow" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cards-track" data-track>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="14" y="4" width="20" height="40" rx="4"/><circle cx="24" cy="16" r="4"/><circle cx="24" cy="30" r="6"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Caixa de Som Bluetooth Compacta</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre caixas de som compactas.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="6" y="14" width="36" height="24" rx="3"/><circle cx="16" cy="26" r="5"/><circle cx="32" cy="26" r="5"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Caixa de Som Portátil Grande</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre caixas de som portáteis.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="16" y="10" width="16" height="28" rx="3"/><circle cx="24" cy="24" r="4"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Mini Speaker USB</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre mini speakers.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="4" y="18" width="40" height="12" rx="4"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Soundbar Compacta</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre soundbars.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FONES ============ -->
+  <section class="category alt reveal reveal-stagger" id="fones">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-head-text">
+          <p class="eyebrow">Categoria 02</p>
+          <h2 class="section-title">Fones de <span class="accent">Ouvido</span></h2>
+          <p class="cat-desc">Bluetooth, com fio, gamer ou pra treino — tem fone pra cada rotina.</p>
+        </div>
+        <div class="track-controls">
+          <button class="track-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="track-arrow" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cards-track" data-track>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><circle cx="14" cy="24" r="7"/><circle cx="34" cy="24" r="7"/><path d="M14 17a10 10 0 0 1 20 0"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Fone Bluetooth TWS</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre fones Bluetooth TWS.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><circle cx="24" cy="14" r="6"/><line x1="24" y1="20" x2="24" y2="40"/><line x1="16" y1="32" x2="24" y2="40"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Fone com Fio P2</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre fones com fio.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><path d="M8 26a16 16 0 0 1 32 0"/><rect x="4" y="24" width="8" height="14" rx="2"/><rect x="36" y="24" width="8" height="14" rx="2"/><line x1="24" y1="10" x2="24" y2="4"/><rect x="20" y="2" width="8" height="4" rx="1"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Headset Gamer</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre headsets gamer.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="2.4"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Fone Bluetooth Esportivo</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre fones esportivos.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARREGADORES ============ -->
+  <section class="category reveal reveal-stagger" id="carregadores">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-head-text">
+          <p class="eyebrow">Categoria 03</p>
+          <h2 class="section-title">Carregadores</h2>
+          <p class="cat-desc">Cabos, fontes turbo, carregador veicular e power bank — pra nunca ficar no vermelho.</p>
+        </div>
+        <div class="track-controls">
+          <button class="track-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="track-arrow" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cards-track" data-track>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="10" y="14" width="28" height="20" rx="3"/><path d="M22 20l-4 6h6l-4 6"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Carregador Turbo USB-C</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre carregadores turbo.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><path d="M6 24h10M32 24h10M16 24a8 8 0 0 1 16 0"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Cabo Reforçado</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre cabos reforçados.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="8" y="18" width="32" height="14" rx="3"/><circle cx="16" cy="25" r="2"/><circle cx="24" cy="25" r="2"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Carregador Veicular</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre carregadores veiculares.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="14" y="8" width="20" height="32" rx="4"/><line x1="20" y1="14" x2="28" y2="14"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Power Bank</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre power banks.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERFUMES ============ -->
+  <section class="category alt reveal reveal-stagger" id="perfumes">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-head-text">
+          <p class="eyebrow">Categoria 04</p>
+          <h2 class="section-title">Perfumes</h2>
+          <p class="cat-desc">Linha masculina, feminina e unissex — fragrâncias de longa duração.</p>
+        </div>
+        <div class="track-controls">
+          <button class="track-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="track-arrow" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cards-track" data-track>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="16" y="16" width="16" height="24" rx="2"/><rect x="20" y="8" width="8" height="8" rx="1"/><line x1="24" y1="4" x2="24" y2="8"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Perfume Masculino Contratipo</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre perfumes masculinos.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><path d="M18 16h12v24a6 6 0 0 1-12 0z"/><rect x="21" y="8" width="6" height="8" rx="1"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Perfume Feminino Contratipo</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre perfumes femininos.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="15" y="18" width="18" height="22" rx="3"/><rect x="19" y="10" width="10" height="8" rx="1"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Perfume Unissex</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre perfumes unissex.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="8" y="20" width="12" height="18" rx="2"/><rect x="26" y="14" width="12" height="24" rx="2"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Kit Perfume + Nécessaire</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre kits de perfume.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VARIEDADES ============ -->
+  <section class="category reveal reveal-stagger" id="variedades">
+    <div class="wrap">
+      <div class="cat-head">
+        <div class="cat-head-text">
+          <p class="eyebrow">Categoria 05</p>
+          <h2 class="section-title">Variedades</h2>
+          <p class="cat-desc">Capinhas, películas, suportes e outros itens do dia a dia. Se não achou aqui, pergunta pra gente.</p>
+        </div>
+        <div class="track-controls">
+          <button class="track-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="track-arrow" data-dir="1" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+      <div class="cards-track" data-track>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="14" y="6" width="20" height="36" rx="5"/><line x1="20" y1="10" x2="28" y2="10"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Capinha de Celular</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre capinhas de celular.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><rect x="15" y="7" width="18" height="34" rx="3"/><line x1="15" y1="16" x2="33" y2="16" stroke-dasharray="3 3"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Película de Vidro</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre películas de vidro.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><path d="M8 34a16 16 0 0 1 32 0"/><rect x="18" y="22" width="12" height="18" rx="2"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Suporte Veicular</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre suportes veiculares.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-card-visual">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="2"><circle cx="24" cy="24" r="14"/><line x1="24" y1="24" x2="24" y2="15"/><line x1="24" y1="24" x2="30" y2="26"/></svg>
+            <span class="ph-tag">imagem ilustrativa</span>
+          </div>
+          <div class="product-card-body">
+            <h4>Relógio Smartwatch</h4>
+            <p class="product-price">a partir de <b>R$ —</b></p>
+            <a href="#" class="wa-btn" data-msg="Olá! Vi no site e quero saber mais sobre smartwatches.">Comprar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe-divider"></div>
+
+  <!-- ============ ASSISTÊNCIA TÉCNICA ============ -->
+  <section class="service reveal" id="assistencia">
+    <div class="wrap">
+      <p class="eyebrow">Serviço</p>
+      <h2 class="section-title">Assistência <span class="accent">Técnica</span></h2>
+      <p class="cat-desc" style="margin-top:10px;">Duas frentes de atendimento, uma só loja de confiança.</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          </div>
+          <h3>Assistência de Celular</h3>
+          <ul class="service-list">
+            <li>Troca de tela e bateria</li>
+            <li>Reparo de conector de carga</li>
+            <li>Manutenção geral e diagnóstico</li>
+            <li>Troca de câmera e botões</li>
+          </ul>
+          <a href="#" class="btn btn-outline wa-btn" data-msg="Olá! Quero solicitar um orçamento para assistência técnica de celular.">Solicitar orçamento</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="8" y1="20" x2="8" y2="16"/><line x1="16" y1="20" x2="16" y2="16"/></svg>
+          </div>
+          <h3>Assistência de Computador</h3>
+          <ul class="service-list">
+            <li>Formatação e manutenção</li>
+            <li>Upgrade de memória e SSD</li>
+            <li>Limpeza interna e troca de pasta térmica</li>
+            <li>Diagnóstico de notebook</li>
+          </ul>
+          <a href="#" class="btn btn-outline wa-btn" data-msg="Olá! Quero solicitar um orçamento para assistência técnica de computador/notebook.">Solicitar orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOJAS ============ -->
+  <section class="stores reveal" id="lojas">
+    <div class="wrap">
+      <p class="eyebrow">Onde estamos</p>
+      <h2 class="section-title">Lojas <span class="accent">Físicas</span></h2>
+      <div class="stores-grid">
+        <div class="store-card">
+          <!-- Confirmar e ajustar endereço exato do embed antes de publicar -->
+          <iframe class="store-map" loading="lazy" src="https://www.google.com/maps?q=Galeria+Boulevard&output=embed" title="Mapa Loja 01 — Galeria Boulevard"></iframe>
+          <div class="store-info">
+            <p class="store-eyebrow">Loja 01</p>
+            <h3>Galeria Boulevard</h3>
+            <div class="store-meta">
+              <div class="store-meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                <a href="https://www.google.com/maps?q=Galeria+Boulevard" target="_blank" rel="noopener">Galeria Boulevard — endereço a confirmar</a>
+              </div>
+              <div class="store-meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                <span>Seg a Dom · 9h às 21h</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline wa-btn" data-msg="Olá! Quero saber mais sobre a Loja 01 (Galeria Boulevard).">Falar sobre esta loja</a>
+          </div>
+        </div>
+        <div class="store-card">
+          <!-- Confirmar e ajustar endereço exato do embed antes de publicar -->
+          <iframe class="store-map" loading="lazy" src="https://www.google.com/maps?q=Em%C3%B3rio+de+Aldeia&output=embed" title="Mapa Loja 02 — Km 10, Aldeia"></iframe>
+          <div class="store-info">
+            <p class="store-eyebrow">Loja 02</p>
+            <h3>Km 10 — Aldeia</h3>
+            <div class="store-meta">
+              <div class="store-meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                <a href="https://www.google.com/maps?q=Emp%C3%B3rio+de+Aldeia" target="_blank" rel="noopener">Em frente ao Empório de Aldeia — endereço a confirmar</a>
+              </div>
+              <div class="store-meta-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+                <span>Seg a Sáb · 8h às 18h</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline wa-btn" data-msg="Olá! Quero saber mais sobre a Loja 02 (Km 10, Aldeia).">Falar sobre esta loja</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ PROVA SOCIAL ============ -->
+<section class="social-proof reveal">
+  <div class="wrap">
+
+    <div class="proof-top">
+      <p class="eyebrow" style="margin:0;">Confiança</p>
+
+      <div class="store-years">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M3 10h18"/>
+          <path d="M5 10V6h14v4"/>
+          <path d="M5 10v8h14v-8"/>
+          <path d="M9 18v-5h6v5"/>
+        </svg>
+
+        <span>Loja física há [X] anos</span>
+      </div>
+    </div>
+
+    <div class="rating-area">
+
+      <div class="rating-number">
+        <span>4,9</span>
+      </div>
+
+      <div class="rating-info">
+
+        <div class="rating-stars" aria-label="Avaliação 4,9 de 5">
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+          <span>★</span>
+        </div>
+
+        <p class="rating-title">Avaliação média da loja</p>
+        <p class="rating-subtitle">
+          Baseado nas avaliações dos nossos clientes
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <div class="stripe-divider"></div>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="contact-cta reveal" id="contato">
+    <div class="wrap">
+      <p class="eyebrow">Fala com a gente</p>
+      <h2>Bora resolver isso<br>agora mesmo?</h2>
+      <p>Manda uma mensagem que a gente responde rapidinho — seja pra comprar, tirar dúvida ou levar o aparelho pra assistência.</p>
+      <div class="contact-ctas">
+        <a href="#" class="btn btn-primary wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais.">Fale no WhatsApp</a>
+        <a href="#lojas" class="btn btn-outline">Ver endereços das lojas</a>
+      </div>
+      <p class="contact-social">Ou nos siga no Instagram <a href="https://instagram.com/juniortech_oficial" target="_blank" rel="noopener">@juniortech_oficial</a></p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Júnior Tech" class="logo-img logo-img-footer">
+      <p>Acessórios, variedades e assistência técnica. Loja física — do jeito que Recife e Aldeia gostam.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/juniortech_oficial" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" class="wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais." aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12a9 9 0 1 1-4.06-7.53M21 12l-4-1 1-4"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Categorias</h5>
+      <ul>
+        <li><a href="#sons">Sons</a></li>
+        <li><a href="#fones">Fones de Ouvido</a></li>
+        <li><a href="#carregadores">Carregadores</a></li>
+        <li><a href="#perfumes">Perfumes</a></li>
+        <li><a href="#variedades">Variedades</a></li>
+        <li><a href="#assistencia">Assistência Técnica</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Lojas</h5>
+      <div class="footer-store">
+        <b>Loja 01 — Galeria Boulevard</b>
+        <span>Seg a Dom · 9h às 21h</span>
+      </div>
+      <div class="footer-store">
+        <b>Loja 02 — Km 10, Aldeia</b>
+        <span>Seg a Sáb · 8h às 18h</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Contato</h5>
+      <ul>
+        <li><a href="#" class="wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais.">WhatsApp</a></li>
+        <li><a href="https://instagram.com/juniortech_oficial" target="_blank" rel="noopener">@juniortech_oficial</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© 2026 Júnior Tech. Todos os direitos reservados.</p>
+    <p class="credit">Feito pela <b>Results.ag</b></p>
+  </div>
+</footer>
+
+<a href="#" class="wa-float wa-btn" data-msg="Olá! Vi o site da Júnior Tech e quero saber mais." aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4c1.5.8 3.2 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.2c-.2.6-1.3 1.2-1.9 1.3-.5.1-1 .1-3-.7-2.5-1-4.2-3.6-4.3-3.8-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.4-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.5 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.4-.2.6-.1l1.7.8c.2.1.4.2.5.3.1.2.1.9-.1 1.4z"/></svg>
+</a>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- NAV SCROLLED STATE ---------- */
+  var nav = document.getElementById('siteNav');
+  function onScroll(){
+    if(window.scrollY > 20){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- WHATSAPP LINKS ---------- */
+  var WA_NUMBER = '5581981387537';
+  document.querySelectorAll('.wa-btn').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var msg = el.getAttribute('data-msg') || 'Olá! Vi o site da Júnior Tech e quero saber mais.';
+      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank', 'noopener');
+    });
+  });
+
+  /* ---------- MOBILE DRAWER ---------- */
+  var drawer = document.getElementById('drawer');
+  var burger = document.getElementById('burgerBtn');
+  var drawerClose = document.getElementById('drawerClose');
+  function openDrawer(){ drawer.classList.add('open'); document.body.classList.add('no-scroll'); }
+  function closeDrawer(){ drawer.classList.remove('open'); document.body.classList.remove('no-scroll'); }
+  burger.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a[data-nav]').forEach(function(a){
+    a.addEventListener('click', function(){ closeDrawer(); });
+  });
+
+  /* ---------- SCROLL SPY ---------- */
+  var sections = ['inicio','sons','fones','carregadores','perfumes','assistencia','lojas','contato']
+    .map(function(id){ return document.getElementById(id); })
+    .filter(Boolean);
+  var navAnchors = document.querySelectorAll('[data-nav]');
+  function setActive(id){
+    navAnchors.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-nav') === id);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin: '-40% 0px -50% 0px', threshold: 0});
+    sections.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* ---------- SCROLL CUE ---------- */
+  var cue = document.getElementById('scrollCue');
+  cue.addEventListener('click', function(){
+    var target = document.getElementById('sons');
+    if(target){ target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'}); }
+  });
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var reveal = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); obs.unobserve(entry.target); }
+      });
+    }, {threshold: .12});
+    revealEls.forEach(function(el){ reveal.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* ---------- HERO PARALLAX ---------- */
+  var heroVisual = document.querySelector('.hero-visual');
+  var heroPattern = document.querySelector('.hero');
+  if(!reduceMotion && heroVisual){
+    document.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y < window.innerHeight){
+        heroVisual.style.transform = 'translateY(' + (y * 0.08) + 'px)';
+      }
+    }, {passive:true});
+  }
+
+  /* ---------- SWIPE NUDGE HINT ON FIRST REVEAL ---------- */
+  if(!reduceMotion){
+    var nudged = {};
+    var nudgeObserver = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        var track = entry.target.querySelector('[data-track]');
+        if(entry.isIntersecting && track && !nudged[entry.target.id]){
+          nudged[entry.target.id] = true;
+          setTimeout(function(){
+            track.scrollTo({left: 46, behavior:'smooth'});
+            setTimeout(function(){ track.scrollTo({left:0, behavior:'smooth'}); }, 500);
+          }, 450);
+        }
+      });
+    }, {threshold:.4});
+    document.querySelectorAll('.category').forEach(function(el){ nudgeObserver.observe(el); });
+  }
+
+  /* ---------- CARD TRACKS: ARROWS + DRAG ---------- */
+  document.querySelectorAll('.category').forEach(function(section){
+    var track = section.querySelector('[data-track]');
+    if(!track) return;
+    var arrows = section.querySelectorAll('.track-arrow');
+    arrows.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var dir = parseInt(btn.getAttribute('data-dir'), 10);
+        var cardWidth = track.querySelector('.product-card').offsetWidth + 18;
+        track.scrollBy({left: dir * cardWidth * 2, behavior: reduceMotion ? 'auto' : 'smooth'});
+      });
+    });
+
+    var isDown = false, startX, scrollLeft, moved;
+    track.addEventListener('pointerdown', function(e){
+      isDown = true; moved = false;
+      track.classList.add('dragging');
+      startX = e.pageX; scrollLeft = track.scrollLeft;
+    });
+    window.addEventListener('pointerup', function(){
+      isDown = false; track.classList.remove('dragging');
+    });
+    track.addEventListener('pointerleave', function(){
+      isDown = false; track.classList.remove('dragging');
+    });
+    track.addEventListener('pointermove', function(e){
+      if(!isDown) return;
+      var dx = e.pageX - startX;
+      if(Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = scrollLeft - dx;
+    });
+    track.addEventListener('click', function(e){
+      if(moved){ e.preventDefault(); e.stopPropagation(); }
+    }, true);
+  });
+})();
+</script>
+</body>
+</html>
